@@ -1,0 +1,1018 @@
+/*
+=================================================
+  CMJ'S Portfolio - Navigation Version
+=================================================
+*/
+
+/* Font declarations */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('../fonts/RobotoMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('../fonts/RobotoMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* --- Display: Neue Haas Grotesk Display --- */
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('../fonts/NeueHaasGrotesk-Display-Roman.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('../fonts/NeueHaasGrotesk-Display-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('../fonts/NeueHaasGrotesk-Display-MediumItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('../fonts/NeueHaasGrotesk-Display-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Text: Neue Haas Grotesk Text --- */
+@font-face {
+  font-family: 'Neue Haas Grotesk Text';
+  src: url('../fonts/NeueHaasGrotesk-Text-Roman.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Text';
+  src: url('../fonts/NeueHaasGrotesk-Text-Italic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Text';
+  src: url('../fonts/NeueHaasGrotesk-Text-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Text';
+  src: url('../fonts/NeueHaasGrotesk-Text-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* CSS Variables */
+:root {
+  --color-background: #fafbfd;
+  --color-text: #111827;
+  --color-nav: #00608d;
+  --font-body: 'Roboto Mono', system-ui, sans-serif;
+  --font-display: 'Neue Haas Grotesk Display', system-ui, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Responsive Typography */
+@media (max-width: 1200px) {
+  html, body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  html, body {
+    font-size: 12px;
+  }
+}
+
+/* Background Art */
+.background-art {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100vh;
+  margin-left: -20%;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.background-art.visible {
+  opacity: 1;
+}
+
+/* Layout */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+/* Page Transitions */
+.page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.page-content.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Standard Page Styles (for non-grid pages) */
+.page-header {
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-family: 'Neue Haas Grotesk Display';
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+}
+
+.page-subtitle {
+  font-family: 'Neue Haas Grotesk Display';
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0.25rem 0;
+  opacity: 0.8;
+}
+
+.content-columns {
+  font-family: 'Roboto Mono';
+  font-weight: 400;  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+  align-items: start; /* Ensure columns align to top */
+}
+
+.content-column {
+  align-self: start; /* Ensure each column starts at top */
+}
+
+.content-column p {
+  margin: 0 0 1.25rem 0;
+}
+
+.content-column p strong {
+  font-weight: 700;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Navigation */
+.nav-menu {
+  position: fixed;
+  top: 4rem;
+  right: 2rem;
+  width: 240px;
+  z-index: 100;
+  transition: top 0.4s ease, bottom 0.4s ease; /* Smooth transition */
+}
+
+/* Bottom-aligned nav for portfolio pages (below visual break) */
+.nav-menu.nav-bottom {
+  top: auto;
+  bottom: 2rem;
+}
+
+.nav-title {
+  font-family: 'Neue Haas Grotesk Display';
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-nav);
+  margin: 0 0 0.5rem 0; /* Reduced from 0.75rem to 0.5rem */
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-bottom: 0.5rem;
+  display: block; /* Changed from flex to block */
+}
+
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-indicator {
+  font-family: 'Neue Haas Grotesk Display';
+  font-size: 0.75rem;
+  color: var(--color-nav);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 12px;
+}
+
+.nav-item.active .nav-indicator {
+  opacity: 1;
+  animation: triangleSlide 0.3s ease-out;
+}
+
+.nav-item a {
+  font-family: 'Neue Haas Grotesk Display';
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-nav);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  flex: 1;
+}
+
+.nav-item a:hover {
+  opacity: 0.7;
+}
+
+.nav-item.flashing a {
+  animation: flash 0.3s ease;
+}
+
+/* Sub-menu styles */
+.nav-submenu {
+  list-style: none;
+  margin: 0; /* No margin when hidden */
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.nav-submenu.visible {
+  max-height: 200px; /* Enough for several sub-items */
+  opacity: 1;
+  margin: 0.0625rem 0 0 0; /* Very minimal top margin (~1px) */
+}
+
+.nav-subitem {
+  margin-bottom: 0.0625rem; /* Very tight spacing between sub-items (~1px) */
+  padding-left: 1.75rem; /* Increased indent from 0.5rem to 1.75rem (~28px) */
+  display: block;
+}
+
+.nav-subitem:last-child {
+  margin-bottom: 0.0625rem; /* Tiny gap after last item before next main item */
+}
+
+.nav-subitem a {
+  font-family: 'Neue Haas Grotesk Display';
+  font-weight: 700;
+  font-size: 0.875rem; /* Same size as main menu items */
+  color: var(--color-nav);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.nav-subitem a:hover {
+  opacity: 0.7;
+}
+
+/* Base underline for active sub-items - starts invisible */
+.nav-subitem.active a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-nav);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-out;
+}
+
+/* Grow underline when animation-trigger class is added */
+.nav-subitem.active.animation-trigger a::after {
+  transform: scaleX(1);
+}
+
+.nav-subitem.flashing a {
+  animation: flash 0.3s ease;
+}
+
+/* Animations */
+@keyframes triangleSlide {
+  0% {
+    transform: translateX(-5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/*
+=================================================
+  12-COLUMN GRID LAYOUT (Artist Pages)
+=================================================
+*/
+
+/* Apply grid layout to any page with .grid-layout class */
+.page-content.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 60vh auto 1fr; /* Images 60%, break auto, text fills rest */
+  min-height: 100vh;
+  padding: 4rem 0 2rem 0; /* Remove left/right padding, keep top/bottom */
+  column-gap: 1.5rem;
+  row-gap: 0; /* Remove row gap, use visual break instead */
+  
+  /* Break out of parent container - use fixed positioning relative to viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  max-width: none; /* Remove any inherited max-width */
+}
+
+/* Keep fixed positioning when active */
+.page-content.grid-layout.active {
+  position: fixed;
+}
+
+/* Vertical Title (Column 1) */
+.page-header-vertical {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4; /* Span all 3 rows */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 0.25rem 0 0.25rem; /* Minimal padding - just enough breathing room */
+}
+
+.page-title-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Neue Haas Grotesk Display';
+  color: var(--color-nav);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Content Columns (2-9, Bottom Row) */
+.content-columns-grid {
+  grid-column: 2 / 10;
+  grid-row: 3 / 4; /* Bottom row - below images and visual break */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: start;
+  align-self: start;
+  margin-top: 2rem; /* Space from visual break */
+  padding-bottom: 2rem; /* Space at bottom */
+  overflow-y: auto; /* Allow scrolling if text is long */
+  max-height: 100%; /* Constrain to available space */
+}
+
+.content-columns-grid .content-column {
+  margin: 0;
+}
+
+.content-columns-grid .content-column p {
+  margin: 0 0 1rem 0; /* Add bottom margin between paragraphs */
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.content-columns-grid .content-column p:last-child {
+  margin-bottom: 0; /* Remove margin from last paragraph */
+}
+
+/* Visual Break (Row 2) - Subtle separator between images and text */
+.visual-break {
+  grid-column: 2 / 12;
+  grid-row: 2 / 3;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(17, 24, 39, 0.15) 20%, 
+    rgba(17, 24, 39, 0.15) 80%, 
+    transparent 100%);
+  margin: 2rem 0;
+  align-self: center;
+}
+
+
+/* Image Comparison (2-12, Top Row) - Base styling */
+.image-comparison-grid {
+  grid-column: 2 / 12; /* Full width variant */
+  grid-row: 1 / 2; /* Top row - showcase first */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-self: center; /* Center vertically in available space */
+  padding-right: 260px; /* Account for fixed nav width (240px + 20px margin) */
+}
+
+@media (max-width: 1400px) {
+  .image-comparison-grid {
+    padding-right: 220px; /* Adjust for smaller nav */
+  }
+}
+
+@media (max-width: 1200px) {
+  .image-comparison-grid {
+    padding-right: 180px; /* Further adjust for medium screens */
+  }
+}
+
+.image-comparison-grid .image-comparison__item {
+  display: flex;
+  flex-direction: column;
+  /* Remove height: 100% to prevent vertical stretching */
+}
+
+/* Portrait Layout Variant  */
+.grid-layout-portrait .image-comparison-grid {
+  grid-column: 2 / 10; /* Stay within nav boundaries (col 10 ends before nav starts) */
+  grid-row: 1 / 2; /* Top row - showcase the work */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 2rem; /* Space between images */
+  align-self: center; /* Center vertically in available space */
+  justify-self: start; /* Align to left */
+  width: 100%; /* Use full available width */
+}
+
+.grid-layout-portrait .image-comparison__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-layout-portrait .image-comparison__item img {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  max-height: 600px;
+  object-fit: contain;
+}
+
+/* Landscape Layout Variant - for pages with wide content (Moving Image, Repetition, Molnar 2) */
+/* IMPORTANT: Must come after base .image-comparison-grid to override properly */
+.grid-layout-landscape {
+  grid-template-rows: 65vh auto 1fr; /* Give more space to landscape images */
+}
+
+.grid-layout-landscape .content-columns-grid {
+  grid-column: 2 / 10;
+  grid-row: 3 / 4; /* Bottom row */
+  margin-top: 1.5rem; /* Reduced top margin */
+  align-self: start;
+}
+
+.grid-layout-landscape .image-comparison-grid {
+  grid-column: 2 / 12 !important; /* Full width from column 2 to 12 - !important to override base */
+  grid-row: 1 / 2; /* Top row - showcase the work */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-self: center; /* Center vertically in available space */
+  padding-right: 260px; /* Account for fixed nav width */
+}
+
+@media (max-width: 1400px) {
+  .grid-layout-landscape .image-comparison-grid {
+    padding-right: 220px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid-layout-landscape .image-comparison-grid {
+    padding-right: 180px;
+  }
+}
+
+.image-comparison-grid .image-label {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  min-height: 28px; /* Match button height for consistent alignment */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Lincoln image cross-fade container */
+#lincoln-image-container {
+  position: relative;
+  width: 100%;
+}
+
+#lincoln-mosaic,
+#lincoln-original {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.05s ease; /* Smooth but fast transitions for animation frames */
+}
+
+#lincoln-mosaic {
+  position: relative;
+}
+
+#lincoln-original {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Container for label and sound toggle */
+.image-label-with-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  min-height: 28px; /* Match button height to ensure consistent baseline */
+}
+
+.image-label-with-controls .image-label {
+  margin: 0;
+}
+
+/* Unified inline control button styling */
+.sound-toggle-btn,
+.video-control-btn,
+.inline-control-btn {
+  padding: 0.35rem 0.75rem;
+  font-family: 'Neue Haas Grotesk Display', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background-color: var(--color-nav);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  min-height: 28px; /* Compact button height */
+  line-height: 1;
+}
+
+.sound-toggle-btn:hover,
+.video-control-btn:hover,
+.inline-control-btn:hover {
+  opacity: 0.8;
+}
+
+.sound-toggle-btn:active,
+.video-control-btn:active,
+.inline-control-btn:active {
+  transform: translateY(1px);
+}
+
+.image-comparison-grid img {
+  width: 100%;
+  height: auto; /* Natural height based on aspect ratio */
+  object-fit: contain;
+  display: block;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  max-height: 600px;
+}
+
+@media (max-width: 1024px) {
+  .image-comparison-grid img {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-comparison-grid img {
+    max-height: 400px;
+  }
+}
+
+/* Video player styling */
+.video-player {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  background-color: #000;
+  max-height: 600px;
+}
+
+@media (max-width: 1024px) {
+  .video-player {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-player {
+    max-height: 400px;
+  }
+}
+
+.image-comparison-grid .image-source {
+  margin: 0.75rem 0 0 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(17, 24, 39, 0.6);
+  font-weight: 400;
+}
+
+.image-comparison-grid .image-source em {
+  font-style: italic;
+}
+
+.image-comparison-grid .image-source a {
+  color: var(--color-nav);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  word-break: break-all;
+}
+
+.image-comparison-grid .image-source a:hover {
+  opacity: 0.7;
+}
+
+/* P5.js Canvas Container */
+.p5-canvas-container {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  background-color: #fafafa;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  line-height: 0; /* Remove extra space below canvas */
+  max-height: 600px; /* Match image max-height */
+}
+
+.p5-canvas-container canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 600px; /* Match image max-height */
+}
+
+@media (max-width: 1024px) {
+  .p5-canvas-container,
+  .p5-canvas-container canvas {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .p5-canvas-container,
+  .p5-canvas-container canvas {
+    max-height: 400px;
+  }
+}
+
+/* Control Buttons for P5 sketches */
+.control-button {
+  position: absolute;
+  bottom: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Neue Haas Grotesk Display', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background-color: var(--color-nav);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  z-index: 10;
+}
+
+.control-button:hover {
+  opacity: 0.8;
+}
+
+.control-button:active {
+  transform: translateY(1px);
+}
+
+/* Position Play/Pause button on the LEFT */
+.pause-btn {
+  left: 1rem;
+  right: auto;
+}
+
+/* Position Reset button on the RIGHT */
+.reset-btn {
+  right: 1rem;
+  left: auto;
+}
+
+/* Legacy support for existing shuffle/reset buttons */
+.shuffle-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Neue Haas Grotesk Display', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  background-color: var(--color-nav);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.shuffle-btn:hover {
+  opacity: 0.8;
+}
+
+.shuffle-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  /* Make grid layouts more compact on smaller screens */
+  .page-content.grid-layout {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .content-columns-grid {
+    gap: 1.5rem;
+  }
+  
+  .image-comparison-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-content.grid-layout {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto;
+    min-height: auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .page-header-vertical {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+  }
+  
+  .content-columns-grid {
+    grid-column: 2 / 7;
+    grid-row: 1 / 2;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .image-comparison-grid {
+    grid-column: 2 / 7;
+    grid-row: 2 / 3;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-right: 0; /* Reset padding on smaller screens */
+  }
+  
+  /* Portrait layout variant adjustments */
+  .grid-layout-portrait .image-comparison-grid {
+    grid-column: 2 / 7;
+  }
+  
+  /* Landscape layout variant adjustments */
+  .grid-layout-landscape .image-comparison-grid {
+    grid-column: 2 / 7;
+    padding-right: 220px;
+  }
+  
+  /* Scale down titles on medium screens */
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-title-vertical {
+    font-size: 1.25rem;
+  }
+  
+  /* Adjust navigation for medium screens */
+  .nav-menu {
+    width: 200px;
+  }
+}
+
+/* Video controls group container */
+.video-controls-group {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .page-content.grid-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto; /* Title, Images, Break, Text */
+    padding: 1.5rem 1rem;
+    position: relative; /* Override fixed positioning on mobile */
+    width: 100%;
+    left: auto;
+  }
+  
+  .page-header-vertical {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-title-vertical {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    font-size: 1.5rem;
+  }
+  
+  .image-comparison-grid {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3; /* Images come first after title */
+    margin-bottom: 2rem;
+  }
+  
+  .visual-break {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    display: none; /* Hide visual break on mobile to save space */
+  }
+  
+  .content-columns-grid {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5; /* Text comes last */
+    margin-top: 0;
+    padding-bottom: 1rem;
+  }
+  
+  .grid-layout-portrait .image-comparison-grid {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  
+  .grid-layout-landscape .image-comparison-grid {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding-right: 0;
+    padding-bottom: 0;
+    align-self: start;
+    margin-bottom: 2rem;
+  }
+  
+  .content-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .nav-menu {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  
+  /* Improve sound toggle on mobile */
+  .sound-toggle-btn {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+    gap: 0.25rem;
+  }
+  
+  .sound-label {
+    display: none; /* Hide text labels on mobile, show only icons */
+  }
+  
+  /* Scale down titles on small screens */
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  /* Scale down navigation on small screens */
+  .nav-title {
+    font-size: 0.75rem;
+  }
+  
+  .nav-item a,
+  .nav-subitem a {
+    font-size: 0.75rem;
+  }
+  
+  /* Canvas containers will naturally fit their content */
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+}

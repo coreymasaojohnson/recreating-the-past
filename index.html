@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Recreating the Past (MAS.S63) · CMJ Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Background art container -->
+    <div id="molnar-art" class="background-art"></div>
+
+    <!-- Main content container -->
+    <div class="page-wrapper">
+      <!-- Right-side navigation -->
+      <nav class="nav-menu">
+        <h3 class="nav-title">CMJ'S PORTFOLIO</h3>
+        <ul class="nav-list">
+          <li class="nav-item active" data-page="overview">
+            <span class="nav-indicator">►</span>
+            <a href="#overview">Course Overview</a>
+          </li>
+          <li class="nav-item" data-page="algorithmic">
+            <div class="nav-item-content">
+              <span class="nav-indicator">►</span>
+              <a href="#algorithmic">Algorithmic Drawing</a>
+            </div>
+            <ul class="nav-submenu">
+              <li class="nav-subitem" data-page="molnar-1">
+                <span class="nav-indicator">►</span>
+                <a href="#molnar-1">Vera Molnár #1</a>
+              </li>
+              <li class="nav-subitem" data-page="molnar-2">
+                <span class="nav-indicator">►</span>
+                <a href="#molnar-2">Vera Molnár #2</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" data-page="repetition">
+            <span class="nav-indicator">►</span>
+            <a href="#repetition">Repetition and Angles</a>
+          </li>
+          <li class="nav-item" data-page="pattern">
+            <span class="nav-indicator">►</span>
+            <a href="#pattern">Pattern and Color</a>
+          </li>
+          <li class="nav-item" data-page="pixels">
+            <span class="nav-indicator">►</span>
+            <a href="#pixels">Pixels</a>
+          </li>
+          <li class="nav-item" data-page="glitch">
+            <span class="nav-indicator">►</span>
+            <a href="#glitch">Moving Image</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content area with multiple pages -->
+      <main class="main-content">
+        <!-- Course Overview Page -->
+        <div class="page-content active" id="page-overview">
+          <header class="page-header">
+            <h1 class="page-title">Recreating the Past (MAS.S63)</h1>
+            <p class="page-subtitle">Instructor: Zach Lieberman</p>
+            <p class="page-subtitle">MIT Media Lab (Fall 2021)</p>
+          </header>
+
+          <div class="content-columns">
+            <div class="content-column">
+              <p>In Recreating the Past, we studied computational art from past decades and recreated these works with contemporary techniques to gain aesthetic, analytical, and technical knowledge.</p>
+              
+              <p>Each classroom session investigated a different set of artists that created work with software, either through code or algorithmic processes. We then recreated their artworks from scratch, discussing their approaches, tools, and poetic underpinnings, investigating what modern tools and approaches might offer to historic works. We also looked at what the artwork taught us about algorithmic approaches and conceptual explorations. The class focused on the building blocks of media art and generative design practice: algorithmic composition, typography, imaging, computer vision, audio analysis/synthesis, and interaction design.</p>
+            </div>
+
+            <div class="content-column">
+              <p><strong>ALGORITHMIC DRAWING:</strong> Vera Molnár / Collette & Charles Bangert</p>
+              <p><strong>REPETITION AND ANGLES:</strong> John & James Whitney</p>
+              <p><strong>COMPUTATIONAL DESIGN:</strong> Muriel Cooper / John Maeda</p>
+              <p><strong>PATTERN AND COLOR:</strong> Bridgette Riley / Anni Albers / Odili Donald Odita</p>
+              <p><strong>PIXELS:</strong> Ken Knowlton / Lillian F. Schwartz</p>
+              <p><strong>IMAGES:</strong> Nancy Burson / Jason Salavon</p>
+              <p><strong>MOVING IMAGE:</strong> Camille Utterback / Myron Kreuger</p>
+              <p><strong>GLITCH / DEFORMATION:</strong> Rosa Menkman / Steina & Woody Vasulka</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Algorithmic Drawing - Molnar 1 Page -->
+        <div class="page-content grid-layout" id="page-molnar-1">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Algorithmic Drawing: Vera Molnár</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <h3 class="image-label">ORIGINAL:</h3>
+              <img src="images/molnar-interstices-1986.png" alt="Original Vera Molnár artwork" />
+              <p class="image-source">Source: Vera Molnar, <em>Interstices</em>, 1986, plotter drawing, DAM Projects, Berlin, <a href="https://www.artsy.net/artwork/vera-molnar-interstices-4" target="_blank" rel="noopener noreferrer">https://www.artsy.net</a>.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Recreation in P5.js by CMJ:</h3>
+                <div id="molnar-1-controls" class="video-controls-group"></div>
+              </div>
+              <div id="molnar-canvas-container" class="p5-canvas-container"></div>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>An early pioneer of computer-generated art, Hungarian Vera Molnár (1924–2023) insisted that computers were tools, not partners. Trained in traditional painting and art history, she turned to strict geometric abstraction in the late 1940s, exploring how simple lines, grids, and squares could be systematically transformed. Before she had access to a computer, Molnár invented what she called her machine imaginaire—an "imaginary machine" of rules and algorithms carried out by hand on paper.</p>
+            </div>
+            <div class="content-column">
+              <p>In 1968, Molnár gained access to a computer in a Sorbonne research lab and taught herself Fortran. She began to draw with plotters, translating her imagined procedures into actual code. Throughout her career she embraced chance and "small doses of disorder," deliberately introducing a "1% disorder" factor to influence her work. These self-imposed constraints produced quietly radical works that linked human intuition with algorithmic logic.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Algorithmic Drawing - Molnar 2 Page -->
+        <div class="page-content grid-layout grid-layout-landscape" id="page-molnar-2">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Algorithmic Drawing: Vera Molnár</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <h3 class="image-label">ORIGINAL:</h3>
+              <img src="images/molnar-new-east-archive.png" alt="Original Vera Molnár artwork" />
+              <p class="image-source">Source: "Vera Molnar: Drawings 1949–1986," Senior & Shopmaker Gallery, New York, April–May 2018, New East Digital Archive, <a href="https://www.new-east-archive.org/articles/show/9879/this-new-york-exhibition-is-celebrating-hungarys-unsung-computer-art-pionee" target="_blank" rel="noopener noreferrer">https://www.new-east-archive.org</a>.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Interactive Recreation by CMJ:</h3>
+                <div id="molnar-2-controls" class="video-controls-group"></div>
+              </div>
+              <div id="molnar-rectangles-container" class="p5-canvas-container"></div>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>Molnár went on to co-found influential groups such as Groupe de Recherche d'Art Visuel and Art et Informatique, which explored the intersection of art, perception, and technology.</p>
+            </div>
+            <div class="content-column">
+              <p>Widely heralded as a foundational figure in digital and generative art, recognition came late in her career. Molnár was the oldest participating artist in the 2022 Venice Biennale.</p>
+            </div>
+          </div>
+        </div>
+
+<!-- Repetition and Angles Page -->
+         <div class="page-content grid-layout grid-layout-landscape" id="page-repetition">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Repetition and Angles: John Whitney</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">ORIGINAL:</h3>
+                <button id="sound-toggle" class="sound-toggle-btn" title="Toggle sound">
+                  <span class="sound-label sound-off-label">Toggle Sound On:</span>
+                  <span class="sound-label sound-on-label" style="display: none;">Toggle Sound Off:</span>
+                  <span class="sound-icon sound-off">🔇</span>
+                  <span class="sound-icon sound-on" style="display: none;">🔊</span>
+                </button>
+              </div>
+              <video id="whitney-video" src="images/JohnWhitney-MatrixIII.mp4" loop muted class="video-player">
+                Your browser does not support the video tag.
+              </video>
+              <p class="image-source">Source: John Whitney, <em>Matrix III</em>, 1972, color and sound on screen projection, <a href="https://www.youtube.com/watch?v=ZrKgyY5aDvA" target="_blank" rel="noopener noreferrer">https://www.youtube.com</a>.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Homage in P5.js by CMJ:</h3>
+                <div id="whitney-controls" class="video-controls-group"></div>
+              </div>
+              <div id="whitney-canvas-container" class="p5-canvas-container" style="background-color: #000;"></div>
+              <p class="image-source">Note: Given that Whitney's film is over ten minutes long, I have not attempted to create a 1:1 reproduction of his effect timing and visual progression.</p>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>John Whitney (1917–1995) was an American animator, composer, and inventor widely regarded as a father of computer animation. Raised in Pasadena and trained in music at Pomona College and in Paris, he began making abstract films in the 1940s with his brother James. Using repurposed World War II anti-aircraft equipment, he built a mechanical analog computer that let him choreograph complex visual motion frame by frame.</p>
+            </div>
+            <div class="content-column">
+              <p>Whitney's mature work fused musical structure with what he called "visual harmony." <em>MATRIX III</em> (1972) distills these ideas into a hypnotic study of triangles, squares, and hexagons whose motion follows invisible Lissajous paths across the frame. Set to Terry Riley's <em>Rainbow in Curved Air</em>, the film exemplifies Whitney's belief that computer-generated motion could act as a kind of visual music, uniting time, space, and perception.</p>
+            </div>
+          </div>
+        </div>
+
+<!-- Pattern and Color Page -->
+        <div class="page-content grid-layout" id="page-pattern">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Pattern and Color: Bridget Riley</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <h3 class="image-label">ORIGINAL:</h3>
+              <img src="images/riley-stage-sixty.jpeg" alt="Original Bridget Riley artwork" />
+              <p class="image-source">Source: Bridget Riley <em>Study for Stage Sixty Symbol</em>, 1961–65, "Post-War & Contemporary Art X Made in California," Bonhams, Los Angeles, September 15, 2021, <a href="https://www.bonhams.com/auction/26900/lot/11/bridget-riley-b-1931-study-for-stage-sixty-symbol-1961-65/" target="_blank" rel="noopener noreferrer">https://www.bonhams.com</a>.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Interactive Recreation By CMJ:</h3>
+                <div id="riley-controls" class="video-controls-group"></div>
+              </div>
+              <div id="riley-canvas-container" class="p5-canvas-container">
+                <!-- Canvas will be created by riley-interactive.js -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>Bridget Riley (b. 1931, London) is a leading figure in Op Art, renowned for paintings that make flat surfaces seem to pulse, tilt, or shimmer. Trained at Goldsmiths and the Royal College of Art, she shifted in the late 1950s from Post-Impressionist, figurative work to a stripped-down language of lines, grids, and curves, shaped by her study of Georges Seurat and modernist abstraction. Early black-and-white works like Movement in Squares (1961) turned perception itself into her subject.</p>
+            </div>
+            <div class="content-column">
+              <p>Her reputation crystallized with MoMA's 1965 exhibition The Responsive Eye, where Riley's painting Current became an icon of Op Art. She soon introduced color, developing stripe and curve compositions that use finely tuned chromatic contrasts to suggest rhythm, space, and movement without depicting objects. Over seven decades, working between London, Cornwall, and France, Riley has remained focused on how color and form act on the eye, insisting that the viewer completes the work.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pixels Page -->
+        <div class="page-content grid-layout" id="page-pixels">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Pixels: Ken Knowlton</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <h3 class="image-label">ORIGINAL:</h3>
+              <img src="images/knowlton-obama.jpg" alt="Original Ken Knowlton artwork" />
+              <p class="image-source">Source: Ken Knowlton <em>Barack Obama (from 2008 acceptance speech)</em>, 2009, <a href="https://www.knowltonmosaics.com/pages/Obama.htm" target="_blank" rel="noopener noreferrer">https://www.knowltonmosaics.com</a>.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Lincoln's Second Inaugural:</h3>
+                <div class="video-controls-group">
+                  <button id="lincoln-toggle" class="video-control-btn" title="Toggle between original and mosaic">
+                    <span class="control-label original-label">View Original</span>
+                    <span class="control-label mosaic-label" style="display: none;">View Mosaic</span>
+                  </button>
+                </div>
+              </div>
+              <div id="lincoln-image-container" style="position: relative; width: 100%;">
+                <img id="lincoln-mosaic" src="images/lincoln-pixels.png" alt="Recreation of Lincoln Mosaic in P5.js by CMJ" />
+                <img id="lincoln-original" src="images/lincoln-original.jpg" alt="Portrait of Abraham Lincoln, 1863" />
+              </div>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>Ken Knowlton (1931–2022) was an American computer scientist, artist, and pioneer of computer animation. After studying engineering physics at Cornell and completing a PhD at MIT, he joined Bell Labs in the early 1960s, where he developed BEFLIX, one of the first programming languages for computer animation, and later EXPLOR and other graphics systems.</p>
+            </div>
+            <div class="content-column">
+              <p> He collaborated with artists such as Stan VanDerBeek and Lillian Schwartz on experimental films, and co-created the landmark computer artwork <em>Studies in Perception I</em> with Leon Harmon. In later years, he built intricate mosaic portraits from thousands of symbols or images, exploring how code, perception, and visual patterning intersect.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glitch/Deformation Page -->
+        <div class="page-content grid-layout grid-layout-landscape" id="page-glitch">
+          <!-- Column 1: vertical page title spanning full height -->
+          <header class="page-header-vertical">
+            <h1 class="page-title-vertical">Moving Image: Camille Utterback</h1>
+          </header>
+          
+          <!-- Row 1: image comparison showcase -->
+          <div class="image-comparison-grid">
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">ORIGINAL:</h3>
+                <button id="matrix-sound-toggle" class="sound-toggle-btn" title="Toggle sound">
+                  <span class="sound-label sound-off-label">Toggle Sound On:</span>
+                  <span class="sound-label sound-on-label" style="display: none;">Toggle Sound Off:</span>
+                  <span class="sound-icon sound-off">🔇</span>
+                  <span class="sound-icon sound-on" style="display: none;">🔊</span>
+                </button>
+              </div>
+              <video id="matrix-video" src="images/matrix-source.mp4" loop muted class="video-player">
+                Your browser does not support the video tag.
+              </video>
+              <p class="image-source">Source: <em>The Matrix</em>, Directed by Lana Wachowski and Lilly Wachowski. Burbank, CA: Warner Bros. Pictures, 1999. Film.</p>
+            </div>
+            <div class="image-comparison__item">
+              <div class="image-label-with-controls">
+                <h3 class="image-label">Recreation in P5.js by CMJ:</h3>
+                <div class="video-controls-group">
+                  <button id="matrix-play-pause" class="video-control-btn" title="Play/Pause">
+                    <span class="control-label play-label">Pause</span>
+                    <span class="control-label pause-label" style="display: none;">Reset</span>
+                  </button>
+                  <button id="matrix-reset" class="video-control-btn" title="Reset to start">
+                    <span class="control-label">Reset</span>
+                  </button>
+                </div>
+              </div>
+              <video id="matrix-output-video" src="images/matrix-output.mov" loop muted class="video-player">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          
+          <!-- Row 2: visual break -->
+          <div class="visual-break"></div>
+          
+          <!-- Row 3: content columns (text context) -->
+          <div class="content-columns-grid">
+            <div class="content-column">
+              <p>Camille Utterback (1970– ) is an American artist and programmer known for pioneering interactive and digital art that links human movement to computational systems. Initially trained as a painter, she creates installations where viewers' gestures generate shifting visual fields, emphasizing the body's role in a screen-saturated world. A MacArthur Fellow, she teaches at Stanford and exhibits internationally in museums, galleries, and public spaces.</p>
+            </div>
+            <div class="content-column">
+              <p>In <em>Text Rain</em> (1999), created with Romy Achituv, visitors see their own black-and-white silhouettes onscreen as colored letters fall like rain around them. The letters "land" on darker areas of the image, collecting on outstretched arms or other silhouettes until words and lines from a poem emerge. This p5.js filter recreates the iconic "rain" from the original <em>Matrix</em> film, released in the same year as <em>Text Rain.</em></p>
+            </div>
+          </div>
+        </div>
+
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Background art sketch (static) -->
+    <script src="js/molnar-interstices.js"></script>
+    
+    <!-- Interactive Molnar sketches for pages -->
+    <script src="js/molnar-rectangles-interactive.js"></script>
+    <script src="js/molnar-interstices-interactive.js"></script>
+    
+    <!-- Riley interactive sketch -->
+    <script src="js/riley-interactive.js"></script>
+    
+    <!-- Whitney Matrix III sketch -->
+    <script src="js/whitney-matrix-interactive.js"></script>
+
+    <!-- Whitney video sound toggle -->
+    <script src="js/whitney-sound-toggle.js"></script>
+    <script src="js/whitney-video-controls.js"></script>
+    
+    <!-- Matrix video sound toggle -->
+    <script src="js/matrix-sound-toggle.js"></script>
+    <script src="js/matrix-video-controls.js"></script>
+    
+    <!-- Lincoln image toggle -->
+    <script src="js/lincoln-toggle.js"></script>
+    
+    <!-- Navigation script -->
+    <script src="js/navigation.js"></script>
+  </body>
+</html>
