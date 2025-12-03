@@ -5,7 +5,7 @@
   let waitStart = 0;
   let waitDuration = 300; // Brief wait before transition
   let transitionStart = 0;
-  let transitionDuration = 800; // Cross-fade duration
+  let transitionDuration = 1400; // Cross-fade duration
   let targetState = "mosaic"; // "mosaic" or "original"
   let animationFrameId = null;
   

@@ -239,17 +239,12 @@ html, body {
 /* Navigation */
 .nav-menu {
   position: fixed;
-  top: 4rem;
+  top: 2.5rem;
   right: 2rem;
   width: 240px;
   z-index: 100;
+  line-height: 1.6;
   transition: top 2s ease, bottom 2s ease; /* 2-second smooth slide */
-}
-
-/* Bottom-aligned nav for portfolio pages (below visual break) */
-.nav-menu.nav-bottom {
-  top: auto;
-  bottom: 2rem;
 }
 
 .nav-title {
@@ -268,7 +263,7 @@ html, body {
 }
 
 .nav-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   display: block; /* Changed from flex to block */
 }
 
@@ -330,11 +325,11 @@ html, body {
 .nav-submenu.visible {
   max-height: 200px; /* Enough for several sub-items */
   opacity: 1;
-  margin: 0.0625rem 0 0 0; /* Very minimal top margin (~1px) */
+  margin: 0.0625rem 0 -0.5rem 0; /* Very minimal top margin (~1px) */
 }
 
 .nav-subitem {
-  margin-bottom: 0.0625rem; /* Very tight spacing between sub-items (~1px) */
+  margin-bottom: 0; /* Very tight spacing between sub-items (~1px) */
   padding-left: 1.75rem; /* Increased indent from 0.5rem to 1.75rem (~28px) */
   display: block;
 }
@@ -412,11 +407,11 @@ html, body {
 .page-content.grid-layout {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 60vh auto 1fr; /* Images 60%, break auto, text fills rest */
+  grid-template-rows: auto 60vh; /* Text first (auto height), images second (60vh) */
   min-height: 100vh;
   padding: 4rem 0 2rem 0; /* Remove left/right padding, keep top/bottom */
   column-gap: 1.5rem;
-  row-gap: 0; /* Remove row gap, use visual break instead */
+  row-gap: 2rem; /* Gap between text and images */
   
   /* Break out of parent container - use fixed positioning relative to viewport */
   position: fixed;
@@ -457,14 +452,14 @@ html, body {
 /* Content Columns (2-9, Bottom Row) */
 .content-columns-grid {
   grid-column: 2 / 10;
-  grid-row: 3 / 4; /* Bottom row - below images and visual break */
+  grid-row: 1 / 2; /* Top row - text first */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-items: start;
   align-self: start;
-  margin-top: 2rem; /* Space from visual break */
-  padding-bottom: 2rem; /* Space at bottom */
+  margin-top: 0; /* No extra margin needed */
+  padding-bottom: 1rem; /* Small space at bottom */
   overflow-y: auto; /* Allow scrolling if text is long */
   max-height: 100%; /* Constrain to available space */
 }
@@ -483,30 +478,16 @@ html, body {
   margin-bottom: 0; /* Remove margin from last paragraph */
 }
 
-/* Visual Break (Row 2) - Subtle separator between images and text */
-.visual-break {
-  grid-column: 2 / 12;
-  grid-row: 2 / 3;
-  height: 1px;
-  background: linear-gradient(to right, 
-    transparent 0%, 
-    rgba(17, 24, 39, 0.15) 20%, 
-    rgba(17, 24, 39, 0.15) 80%, 
-    transparent 100%);
-  margin: 2rem 0;
-  align-self: center;
-}
-
 
 /* Image Comparison - Base styling for PORTRAIT layouts */
 .grid-layout:not(.grid-layout-landscape) .image-comparison-grid {
   grid-column: 2 / 10; /* Portrait: columns 2-9, narrower to match text width */
-  grid-row: 1 / 2; /* Top row - showcase first */
+  grid-row: 2 / 3; /* Second row - images after text */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-self: center; /* Center vertically in available space */
-  /* NO padding-right needed - nav is at bottom on portfolio pages */
+  /* NO padding-right needed - nav stays at top */
 }
 
 @media (max-width: 1400px) {
@@ -555,13 +536,13 @@ html, body {
 /* Landscape Layout Variant - for pages with wide content (Moving Image, Repetition, Molnar 2) */
 /* IMPORTANT: Must come after base .image-comparison-grid to override properly */
 .grid-layout-landscape {
-  grid-template-rows: 65vh auto 1fr; /* Give more space to landscape images */
+  grid-template-rows: auto 65vh; /* Text first (auto), landscape images taller (65vh) */
 }
 
 .grid-layout-landscape .content-columns-grid {
   grid-column: 2 / 10;
-  grid-row: 3 / 4; /* Bottom row */
-  margin-top: 1.5rem; /* Reduced top margin */
+  grid-row: 1 / 2; /* Top row - text first */
+  margin-top: 0; /* No extra margin */
   align-self: start;
 }
 
@@ -570,20 +551,20 @@ html, body {
 /* Grid system automatically includes gaps between columns - we just specify column span */
 .page-content.grid-layout.grid-layout-landscape .image-comparison-grid {
   grid-column: 2 / 13 !important; /* Span from column 2 to edge (after column 12) */
-  grid-row: 1 / 2;
+  grid-row: 2 / 3; /* Second row - images after text */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-self: start;
   justify-self: stretch;
   width: 100%;
-  padding-right: 40px; /* Small breathing room near nav at bottom */
+  padding-right: 70px; /* Small breathing room near nav at bottom */
   box-sizing: border-box;
 }
 
 @media (max-width: 1400px) {
   .page-content.grid-layout.grid-layout-landscape .image-comparison-grid {
-    padding-right: 30px;
+    padding-right: 50px;
   }
 }
 
@@ -903,7 +884,7 @@ html, body {
   /* Landscape layout variant adjustments */
   .page-content.grid-layout.grid-layout-landscape .image-comparison-grid {
     grid-column: 2 / 7 !important; /* Narrower for tablet (6-col grid) */
-    /* No padding-right needed */
+    padding-right: 2rem;
   }
   
   /* Scale down titles on medium screens */
@@ -931,7 +912,7 @@ html, body {
 @media (max-width: 768px) {
   .page-content.grid-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto; /* Title, Images, Break, Text */
+    grid-template-rows: auto auto auto; /* Title, Text, Images */
     padding: 1.5rem 1rem;
     position: relative; /* Override fixed positioning on mobile */
     width: 100%;
@@ -952,32 +933,27 @@ html, body {
   
   .image-comparison-grid {
     grid-column: 1 / 2;
-    grid-row: 2 / 3; /* Images come first after title */
+    grid-row: 3 / 4; /* Images come third (after title and text) */
     margin-bottom: 2rem;
   }
   
-  .visual-break {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    display: none; /* Hide visual break on mobile to save space */
-  }
   
   .content-columns-grid {
     grid-column: 1 / 2;
-    grid-row: 4 / 5; /* Text comes last */
+    grid-row: 2 / 3; /* Text comes second (after title) */
     margin-top: 0;
-    padding-bottom: 1rem;
+    margin-bottom: 2rem; /* Space before images */
+    padding-bottom: 0;
   }
   
   .grid-layout-portrait .image-comparison-grid {
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4; /* Images come third (after text) */
   }
   
   .page-content.grid-layout.grid-layout-landscape .image-comparison-grid {
     grid-column: 1 / 2 !important; /* Single column on mobile */
-    grid-row: 2 / 3;
-    padding-right: 0;
+    grid-row: 3 / 4; /* Images come third (after text) */
     padding-left: 0;
     margin-bottom: 2rem;
   }

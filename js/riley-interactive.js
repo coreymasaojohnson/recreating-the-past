@@ -147,9 +147,16 @@ new p5((p) => {
       bgIntensity = p.lerp(bgIntensity, pulseTarget, bgSpeed);
       circlePulseIntensity = p.lerp(circlePulseIntensity, pulseTarget, circleSpeed);
     } else {
-      // Fade both back toward original state
-      bgIntensity = p.lerp(bgIntensity, 0, 0.08);
-      circlePulseIntensity = p.lerp(circlePulseIntensity, 0, 0.05);
+      // Fade both back toward original state.
+      // When the mouse leaves the canvas, ease back more gently so
+      // the transition home is less abrupt.
+      const offCanvas = !overCanvas && !demoActive;
+
+      const fadeBgSpeed = offCanvas ? 0.03 : 0.08;      // was 0.08
+      const fadeCircleSpeed = offCanvas ? 0.02 : 0.05;  // was 0.05
+
+      bgIntensity = p.lerp(bgIntensity, 0, fadeBgSpeed);
+      circlePulseIntensity = p.lerp(circlePulseIntensity, 0, fadeCircleSpeed);
     }
 
     // Set background color based on intensity
