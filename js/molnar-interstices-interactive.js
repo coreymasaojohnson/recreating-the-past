@@ -50,6 +50,12 @@ const molnarSketch = (p) => {
   let shuffleBtn;
   let canvasContainer;
 
+  // Helper: is Molnar 1 page currently active?
+  function isMolnar1PageActive() {
+    const page = document.getElementById('page-molnar-1');
+    return page && page.classList.contains('active');
+  }
+
   p.setup = () => {
     canvasContainer = p.select('#molnar-canvas-container');
     
@@ -97,15 +103,23 @@ const molnarSketch = (p) => {
     // Draw once initially
     p.noLoop();
 
-    // --- NEW: Listen for navigation event to trigger one-time shuffle ---
+    // --- Listen for navigation event to trigger a double shuffle ---
     document.addEventListener('molnar1PageActivated', () => {
-      // Wait 2 seconds before shuffling
+      // Wait 2 seconds before first shuffle
       setTimeout(() => {
-        // Only trigger if not already moving
+        if (!isMolnar1PageActive()) return;
+
+        // Only auto-fire if the sketch is at rest
         if (state === 'static') {
-          startShuffle();
+          startShuffle(); // first shuffle
+
+          // Second shuffle 1.5s later
+          setTimeout(() => {
+            if (!isMolnar1PageActive()) return;
+            startShuffle();
+          }, 1500);
         }
-      }, 2000);
+      }, 2800);
     });
   };
 

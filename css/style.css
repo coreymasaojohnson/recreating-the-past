@@ -115,7 +115,7 @@ html, body {
   line-height: 1.6;
 }
 
-/* Responsive Typography */
+/* Responsive Typography (global root size) */
 @media (max-width: 1200px) {
   html, body {
     font-size: 15px;
@@ -139,6 +139,7 @@ html, body {
     font-size: 12px;
   }
 }
+
 
 /* Background Art */
 .background-art {
@@ -228,6 +229,8 @@ html, body {
 
 .content-column p {
   margin: 0 0 1.25rem 0;
+  /* Responsive font size: scales from 11px to 13px */
+  font-size: clamp(0.6875rem, 0.5rem + 0.3vw, 0.8125rem);
 }
 
 .content-column p strong {
@@ -409,7 +412,7 @@ html, body {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto 60vh; /* Text first (auto height), images second (60vh) */
   min-height: 100vh;
-  padding: 4rem 0 2rem 0; /* Remove left/right padding, keep top/bottom */
+  padding: 3rem 0 2rem 0; /* Top padding reduced to 3rem for tighter layout */
   column-gap: 1.5rem;
   row-gap: 2rem; /* Gap between text and images */
   
@@ -471,7 +474,8 @@ html, body {
 .content-columns-grid .content-column p {
   margin: 0 0 1rem 0; /* Add bottom margin between paragraphs */
   line-height: 1.6;
-  font-size: 1rem;
+  /* Responsive font size: scales from 11px (mobile) to 13px (desktop) */
+  font-size: clamp(0.6875rem, 0.5rem + 0.3vw, 0.8125rem);
 }
 
 .content-columns-grid .content-column p:last-child {
@@ -487,6 +491,7 @@ html, body {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-self: center; /* Center vertically in available space */
+  margin-top: 2rem; /* Breathing room between text and images */
   /* NO padding-right needed - nav stays at top */
 }
 
@@ -560,6 +565,11 @@ html, body {
   width: 100%;
   padding-right: 70px; /* Small breathing room near nav at bottom */
   box-sizing: border-box;
+}
+
+/* Molnar #2 specific - extra top margin due to expanded submenu */
+#page-molnar-2.grid-layout-landscape .image-comparison-grid {
+  margin-top: 2.5rem;
 }
 
 @media (max-width: 1400px) {
@@ -705,7 +715,7 @@ html, body {
 }
 
 .image-comparison-grid .image-source {
-  margin: 0.75rem 0 0 0;
+  margin: 0.75rem 0 1rem 0; /* Added 1rem bottom margin for breathing room */
   font-family: 'Roboto Mono', monospace;
   font-size: 0.75rem;
   line-height: 1.5;
