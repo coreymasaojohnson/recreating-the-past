@@ -116,6 +116,17 @@ html, body {
 }
 
 /* Responsive Typography (global root size) */
+@media (max-width: 1280px) {
+  /* Intermediate laptop size adjustments */
+  .page-title-vertical {
+    font-size: 1.35rem; /* Slightly smaller than default 1.5rem */
+    letter-spacing: 0.09em;
+  }
+  
+  /* NO padding needed - text columns already match image grid (2/10) */
+  /* Let the grid system handle width naturally */
+}
+
 @media (max-width: 1200px) {
   html, body {
     font-size: 15px;
@@ -491,7 +502,7 @@ html, body {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-self: center; /* Center vertically in available space */
-  margin-top: 2rem; /* Breathing room between text and images */
+  margin-top: 2rem; /* Original spacing - this was correct */
   /* NO padding-right needed - nav stays at top */
 }
 
@@ -533,7 +544,7 @@ html, body {
 .grid-layout-portrait .image-comparison__item img {
   width: 100%;
   height: auto;
-  min-height: 400px;
+  /* Removed min-height: 400px - let images be natural size */
   max-height: 600px;
   object-fit: contain;
 }
@@ -683,6 +694,31 @@ html, body {
   .image-comparison-grid img {
     max-height: 500px;
   }
+  
+  /* Reduce vertical title size much more to take less horizontal space */
+  .page-title-vertical {
+    font-size: 1rem; /* Much smaller from 1.5rem */
+    letter-spacing: 0.05em; /* Very tight spacing */
+  }
+  
+  .page-header-vertical {
+    padding: 0 0.1rem; /* Minimal padding */
+  }
+  
+  /* Add right padding to text columns to clear nav bar on tablets */
+  .content-columns-grid {
+    padding-right: 280px; /* Clear the fixed nav on right */
+  }
+  
+  .grid-layout-landscape .content-columns-grid {
+    padding-right: 280px; /* Clear nav for landscape pages too */
+  }
+  
+  /* Force P5 canvas to better fill container at tablet size */
+  .p5-canvas-container {
+    min-height: 450px; /* Ensure container has height */
+    max-height: 500px; /* Match image max-height */
+  }
 }
 
 @media (max-width: 768px) {
@@ -723,18 +759,31 @@ html, body {
   font-weight: 400;
 }
 
-.image-comparison-grid .image-source em {
+/* Smaller source-label class for source citations and notes */
+.image-comparison-grid .source-label {
+  margin: 0.5rem 0 0.75rem 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.65rem; /* Smaller than image-source - 10.4px at base 16px */
+  line-height: 1.4;
+  color: rgba(17, 24, 39, 0.5); /* Slightly lighter */
+  font-weight: 400;
+}
+
+.image-comparison-grid .image-source em,
+.image-comparison-grid .source-label em {
   font-style: italic;
 }
 
-.image-comparison-grid .image-source a {
+.image-comparison-grid .image-source a,
+.image-comparison-grid .source-label a {
   color: var(--color-nav);
   text-decoration: none;
   transition: opacity 0.2s ease;
   word-break: break-all;
 }
 
-.image-comparison-grid .image-source a:hover {
+.image-comparison-grid .image-source a:hover,
+.image-comparison-grid .source-label a:hover {
   opacity: 0.7;
 }
 

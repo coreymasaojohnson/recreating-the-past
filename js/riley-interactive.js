@@ -5,7 +5,7 @@
 new p5((p) => {
   // Original logical coordinates
   const LOGICAL_WIDTH = 800;
-  const LOGICAL_HEIGHT = 1010;
+  const LOGICAL_HEIGHT = 1015;
   const OFFSET_X = 163;
   const OFFSET_Y = 227;
 
