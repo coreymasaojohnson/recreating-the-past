@@ -62,6 +62,109 @@ class Navigation {
     this.updateNavigation(this.currentPage);
     // Ensure nav bar starts in the correct position for the initial page
     this.updateNavPosition(this.currentPage);
+    
+    // Set up Text Rain modal handlers
+    this.setupTextRainModal();
+  }
+  
+  setupTextRainModal() {
+    const textRainLink = document.getElementById('text-rain-link');
+    const modal = document.getElementById('text-rain-modal');
+    const closeBtn = modal?.querySelector('.modal-close');
+    const video = document.getElementById('text-rain-video');
+    
+    if (!textRainLink || !modal) return;
+    
+    // Open modal when clicking Text Rain link
+    textRainLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Lock body scroll
+      // Auto-play video from start (muted)
+      if (video) {
+        video.currentTime = 0;
+        video.play().catch(err => console.log('Video autoplay prevented:', err));
+      }
+    });
+    
+    // Close modal when clicking close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Unlock body scroll
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+          // Don't mute - just pause and reset
+        }
+        // Reset button UI states
+        resetModalControls();
+      });
+    }
+    
+    // Close modal when clicking outside the content
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Unlock body scroll
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+          // Don't mute - just pause and reset
+        }
+        // Reset button UI states
+        resetModalControls();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Unlock body scroll
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+          // Don't mute - just pause and reset
+        }
+        // Reset button UI states
+        resetModalControls();
+      }
+    });
+    
+    // Helper function to reset modal control button states
+    function resetModalControls() {
+      // Reset sound toggle to muted state (show "TOGGLE SOUND ON")
+      const soundToggle = document.getElementById('text-rain-sound-toggle');
+      if (soundToggle) {
+        const soundOffIcon = soundToggle.querySelector('.sound-off');
+        const soundOnIcon = soundToggle.querySelector('.sound-on');
+        const soundOffLabel = soundToggle.querySelector('.sound-off-label');
+        const soundOnLabel = soundToggle.querySelector('.sound-on-label');
+        
+        // When muted, show "sound on" labels (the action that will happen)
+        if (soundOffIcon && soundOnIcon) {
+          soundOffIcon.style.display = 'none';
+          soundOnIcon.style.display = 'inline-block';
+        }
+        if (soundOffLabel && soundOnLabel) {
+          soundOffLabel.style.display = 'none';
+          soundOnLabel.style.display = 'inline-block';
+        }
+      }
+      
+      // Reset play/pause to play state
+      const playPauseBtn = document.getElementById('text-rain-play-pause');
+      if (playPauseBtn) {
+        const playLabel = playPauseBtn.querySelector('.play-label');
+        const pauseLabel = playPauseBtn.querySelector('.pause-label');
+        
+        if (playLabel && pauseLabel) {
+          playLabel.style.display = 'inline-block';
+          pauseLabel.style.display = 'none';
+        }
+      }
+    }
   }
   
   async switchPage(clickedItem, targetPage, isMainNavItem) {

@@ -1068,3 +1068,167 @@ html, body {
     font-size: 1rem;
   }
 }
+
+/* Text Rain Modal Overlay */
+.text-rain-link {
+  color: var(--color-nav);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.text-rain-link:hover {
+  opacity: 0.7;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17, 24, 39, 0.85); /* Semi-transparent dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Above everything - blocks nav (z-index: 100) interaction */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* Don't block clicks when hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Block all clicks when visible - acts as full-screen barrier */
+}
+
+.modal-content {
+  background-color: #1f1f1f; /* Dark grey, almost black */
+  border-radius: 0; /* No rounded corners - square edges */
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem; /* Reduced padding - X button now inline */
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  /* Now inline with controls - uses .inline-control-btn and .modal-control-btn classes */
+  margin-left: 1rem; /* Spacing to differentiate from other controls */
+  font-size: 1.5rem; /* Larger X symbol */
+  line-height: 1;
+}
+
+.modal-close:hover {
+  opacity: 0.8; /* Uses same hover as other modal buttons */
+}
+
+/* Modal Header Row - Title and Controls */
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.modal-title {
+  font-family: 'Neue Haas Grotesk Display', sans-serif;
+  font-size: 1.125rem; /* Smaller - down from 1.5rem */
+  font-weight: 700;
+  color: #ffffff; /* White */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left; /* Left-aligned */
+  flex-shrink: 0;
+}
+
+.modal-controls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Modal Control Buttons - Blue background with white text */
+.modal-control-btn {
+  background-color: var(--color-nav); /* Blue */
+  color: var(--color-background); /* White */
+  border: none; /* No border needed */
+  min-height: 32px; /* Ensure consistent height for all buttons */
+  height: 32px; /* Fixed height to match sound button */
+}
+
+.modal-control-btn:hover {
+  opacity: 0.8;
+}
+
+.modal-control-btn:active {
+  transform: translateY(1px);
+}
+
+/* SVG icons in modal controls should use white stroke */
+.modal-control-btn svg {
+  stroke: var(--color-background); /* White */
+}
+
+.modal-video-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.modal-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-content .source-label {
+  text-align: center;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7); /* Light grey text */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 2rem 1.5rem; /* Reduced - X button now inline */
+    max-height: 95vh;
+  }
+  
+  .modal-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1rem; /* Proportionally smaller */
+  }
+  
+  .modal-controls-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+  }
+  
+  .modal-close {
+    margin-left: 0.5rem; /* Less margin on mobile */
+    font-size: 1.25rem; /* Smaller X on mobile */
+  }
+}

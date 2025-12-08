@@ -343,7 +343,55 @@
               <p>Camille Utterback (1970– ) is an American artist and programmer known for pioneering interactive and digital art that links human movement to computational systems. Initially trained as a painter, she creates installations where viewers' gestures generate shifting visual fields, emphasizing the body's role in a screen-saturated world. A MacArthur Fellow, she teaches at Stanford and exhibits internationally in museums, galleries, and public spaces.</p>
             </div>
             <div class="content-column">
-              <p>In <em>Text Rain</em> (1999), created with Romy Achituv, visitors see their own black-and-white silhouettes onscreen as colored letters fall like rain around them. The letters "land" on darker areas of the image, collecting on outstretched arms or other silhouettes until words and lines from a poem emerge. Taking Utterback and Achituv's work as a point of departure, this p5.js filter recreates the iconic textual "rain" from the original <em>Matrix</em> film, released in the same year as <em>Text Rain.</em></p>
+              <p>In <em><a href="#" id="text-rain-link" class="text-rain-link">Text Rain</a></em> (1999), created with Romy Achituv, visitors see their own black-and-white silhouettes onscreen as colored letters fall like rain around them. The letters "land" on darker areas of the image, collecting on outstretched arms or other silhouettes until words and lines from a poem emerge. Taking Utterback and Achituv's work as a point of departure, this p5.js filter recreates the iconic textual "rain" from the original <em>Matrix</em> film, released in the same year as <em>Text Rain.</em></p>
+            </div>
+          </div>
+          
+          <!-- Text Rain Modal -->
+          <div id="text-rain-modal" class="modal-overlay">
+            <div class="modal-content">
+              <!-- Title and Controls Row -->
+              <div class="modal-header-row">
+                <h2 class="modal-title">TEXT RAIN (1999)</h2>
+                <div class="modal-controls-wrapper">
+                  <!-- Sound Toggle -->
+                  <button id="text-rain-sound-toggle" class="inline-control-btn modal-control-btn" title="Toggle sound">
+                    <svg class="sound-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                      <line x1="23" y1="9" x2="17" y2="15"/>
+                      <line x1="17" y1="9" x2="23" y2="15"/>
+                    </svg>
+                    <svg class="sound-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                    </svg>
+                    <span class="sound-off-label control-label">TOGGLE SOUND OFF</span>
+                    <span class="sound-on-label control-label" style="display: none;">TOGGLE SOUND ON</span>
+                  </button>
+                  
+                  <!-- Play/Pause Button -->
+                  <button id="text-rain-play-pause" class="inline-control-btn modal-control-btn" title="Play/Pause">
+                    <span class="control-label play-label">PLAY</span>
+                    <span class="control-label pause-label" style="display: none;">PAUSE</span>
+                  </button>
+                  
+                  <!-- Reset Button -->
+                  <button id="text-rain-reset" class="inline-control-btn modal-control-btn" title="Reset to start">
+                    RESET
+                  </button>
+                  
+                  <!-- Close Button - Inline with controls -->
+                  <button class="modal-close inline-control-btn modal-control-btn" aria-label="Close modal">&times;</button>
+                </div>
+              </div>
+              
+              <div class="modal-video-container">
+                <video id="text-rain-video" class="modal-video" muted>
+                  <source src="images/text-rain.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <p class="source-label">Source: Camille Utterback & Romy Achituv, <em>Text Rain</em>, 1999, interactive installation.</p>
             </div>
           </div>
         </div>
@@ -373,6 +421,9 @@
     <!-- Matrix video sound toggle -->
     <script src="js/matrix-sound-toggle.js"></script>
     <script src="js/matrix-video-controls.js"></script>
+    
+    <!-- Text Rain modal controls -->
+    <script src="js/text-rain-controls.js"></script>
     
     <!-- Lincoln image toggle -->
     <script src="js/lincoln-toggle.js"></script>
