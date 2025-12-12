@@ -19,6 +19,7 @@ const molnarSketch = (p) => {
   // --- SPACING ADJUSTMENT ---
   const BASE_SPACING_Y = 60; 
   const BASE_SPACING_X = 60; 
+
   let spacingX = BASE_SPACING_X * RECT_RATIO; // Horizontal spacing adjusted by 0.9 = 54
   let spacingY = BASE_SPACING_Y;              // Vertical spacing remains 60
 

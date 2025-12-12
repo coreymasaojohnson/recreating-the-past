@@ -28,11 +28,11 @@ const molnarSketch = (p) => {
   let grainDensity = 0.6;
 
   // --- AESTHETIC UPDATE ---
-  const HUE = 319;
-  const SATURATION = 65;
-  const BRIGHTNESS = 18;
-  const MIN_ALPHA = 140;
-  const MAX_ALPHA = 155;
+  const HUE = 340;
+  const SATURATION = 75;
+  const BRIGHTNESS = 13;
+  const MIN_ALPHA = 120;
+  const MAX_ALPHA = 135;
 
   // Layout + animation state
   let currentRandomSeed = 3;
@@ -182,7 +182,7 @@ const molnarSketch = (p) => {
   };
 
   function startShuffle() {
-    // If weâ€™re mid-transition, capture the *current* visual positions
+    // If we’re mid-transition, capture the *current* visual positions
     // and use those as the new "from" layout (like the bounce sketch).
     if (state === "transition" && targetLayout && currentLayout.length === targetLayout.length) {
       let elapsed = p.millis() - transitionStart;
